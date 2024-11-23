@@ -80,6 +80,9 @@ O projeto, até o momento, abrange:
    ```bash
    git clone https://github.com/sousa-sara/energyx-dotnet-mvc.git
 
+2. Abra o projeto.
+3. No PowerShell do Desenvolvedor, digite o comando: 'dotnet watch run'.
+
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
 
