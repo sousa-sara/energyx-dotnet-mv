@@ -1,0 +1,95 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    var hideNavigation = (ViewContext.RouteData.Values["controller"]?.ToString() == "Login" &&
+    ViewContext.RouteData.Values["action"]?.ToString() == "Index");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EnergyX</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EnergyX.styles.css" a asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-3"
+            style="border-radius: 0 0 2rem 2rem; box-shadow: 0 0 8px #3d3d3d;">
+            <div class=" container-fluid">
+                <a class="title-logo" asp-area="" asp-controller="Home" asp-action="Index">EnergyX</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 d-flex w-100 justify-content-between">
+                        <div class="d-flex">
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #ddd" asp-area="" asp-controller="Home"
+                                    asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #ddd" asp-area="" asp-controller="Home"
+                                    asp-action="RelatoriosTurno">Relatórios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #ddd" asp-area="" asp-controller="Home"
+                                    asp-action="Perfil">Perfil</a>
+                            </li>
+                        </div>
+                        @* @if (!hideNavigation) *@
+                        @* { *@
+                        @* <li class="nav-item pe-4" style="cursor: pointer;">
+                            <a class="nav-link" style="color: #ddd" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">Sair</a>
+                        </li> *@
+                        @* } *@
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Terminar Sessão</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja sair da aplicação?
+                    </div>
+                    <form asp-action="Logout" asp-controller="Operador" method="post" class="modal-footer d-flex">
+                        <button type="button" class="btn btn-secondary w-5" data-bs-dismiss="modal"
+                            style="width: 8rem">Voltar</button>
+                        <button type="submit" class="btn btn-danger" style="width: 8rem">Sair</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-muted" style="border-radius: 2rem 2rem 0 0; box-shadow: 0 0 8px #3d3d3d;">
+        <div class="container" style="text-align: center;">
+            &copy; 2024 - Developed by EnergyX
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

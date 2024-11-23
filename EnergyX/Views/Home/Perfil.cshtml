@@ -1,0 +1,96 @@
+@model EnergyX.DTOs.OperadoresDto
+
+@{
+  ViewData["Title"] = "Perfil do Operador";
+}
+
+
+<div class="container mt-5 p-5"
+  style="background: #16171D; border-radius: 1rem; box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);">
+  <h2 class="mb-5">Perfil do Operador</h2>
+
+  <form asp-controller="Operador" asp-action="Update" method="post" class="d-flex flex-column align-items-center"
+    style="gap: 1rem">
+    <input type="hidden" asp-for="OperadorId" />
+
+    <div class="login__box">
+      <label for="">Nome Operador</label>
+      <input type="text" asp-for="NomeOperador" class="login__input" id="NomeOperador" placeholder="Nome do Operador" />
+      <span asp-validation-for="NomeOperador" class="text-danger"></span>
+    </div>
+
+    <div class="login__box">
+      <label for="">Cargo</label>
+      <i class='bx bxs-user-badge login__icon'></i>
+      <input type="text" asp-for="Cargo" class="login__input" id="Cargo" placeholder="Cargo" />
+      <span asp-validation-for="Cargo" class="text-danger"></span>
+    </div>
+
+    <div class="login__box">
+      <label for="">Lor</label>
+      <input type="text" asp-for="Lor" class="login__input" id="Lor" placeholder="Lincença de Operação Reatores"
+        readonly />
+      <span asp-validation-for="Lor" class="text-danger"></span>
+    </div>
+
+    <div class="login__box">
+      <label for="">Turno</label>
+      <input type="text" asp-for="Lor" class="login__input" id="Lor" placeholder="Turno" />
+      <span asp-validation-for="Lor" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4 w-100">
+      <button type="submit" class="btn btn-primary">Atualizar Dados</button>
+
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Excluir Conta
+      </button>
+    </div>
+  </form>
+
+  <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class='rounded me-2 bx bxs-check-circle'></i>
+        <strong class="me-auto">Sucesso!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        @TempData["okMsg"]
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Atenção</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Realmente deseja confirmar a exclusão da conta?
+        </div>
+        <form asp-action="Delete" asp-controller="Operador" method="post" class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger">Confirmar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+  }
+
+  @if (TempData["okMsg"] != null)
+  {
+    <script type="text/javascript">
+      var toast = new bootstrap.Toast(document.getElementById('liveToast'));
+      toast.show();
+    </script>
+  }
+}

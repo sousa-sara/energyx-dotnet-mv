@@ -1,0 +1,199 @@
+@model IEnumerable<EnergyX.DTOs.RelatoriosTurnoDto>
+
+@{
+  ViewData["Title"] = "Relatórios de Turno";
+}
+
+<div class="container mt-5">
+  <h2 class="mb-4">Relatórios</h2>
+  @if (TempData["msgSucesso"] != null)
+  {
+    <div class="alert alert-success">@TempData["msgSucesso"]</div>
+  }
+  @if (TempData["ErrorMessage"] != null)
+  {
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+  }
+
+  <!-- Botão para adicionar novo relatório -->
+  <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalRelatorio"
+    onclick="showModal('add')">Adicionar Relatório</button>
+
+  <!-- Tabela para listar os relatórios -->
+  <table class="table table-hover text-center align-middle w-100 h-100"
+    style="border-collapse: separate; border-spacing: 0 15px">
+    <thead class="table-gradient" style="background: #363a4f9d; color: white; border-radius: 8px;">
+      <tr>
+        <th style="border-top-left-radius: 1.5rem;">Data Registro</th>
+        <th>Resumo Atividade</th>
+        <th>Reator</th>
+        <th></th>
+        <th style="border-top-right-radius: 1.5rem;"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      @if (Model != null && Model.Any())
+      {
+        @foreach (var relatorio in Model)
+        {
+          <tr class="table-row">
+            <td>@relatorio.DataHoraRelatorio.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>@relatorio.ResumoAtividades</td>
+            <td>@relatorio.ReatorId</td>
+            <td>
+              @* Botão de editar *@
+              <button class="btn btn-sm btn-secondary w-100 px-3" data-bs-toggle="modal" data-bs-target="#modalRelatorio"
+                onclick="showModal('edit', {
+                  RelatorioTurnoId: @relatorio.RelatorioTurnoId, 
+                  ResumoAtividades: '@relatorio.ResumoAtividades',
+                  Observacoes: '@relatorio.Observacoes',
+                  OperadorId: @relatorio.OperadorId,
+                  ReatorId: @relatorio.ReatorId
+                })">Editar</button>
+
+            </td>
+            <td>
+              @* Botão de excluir *@
+              <button class="btn btn-sm btn-danger w-100 px-3" data-bs-toggle="modal" data-bs-target="#modalRelatorioDelete"
+                onclick="showModalDelete(@relatorio.RelatorioTurnoId)">Excluir</button>
+            </td>
+          </tr>
+        }
+
+      }
+      else
+      {
+        <tr>
+          <td colspan="6" class="text-center">Nenhum relatório registrado.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal para formulário de adicionar/editar relatório -->
+<div class="modal fade" id="modalRelatorio" tabindex="-1" aria-labelledby="modalRelatorioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRelatorioLabel">Adicionar/Editar Relatório</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formRelatorio" class="form-modal" method="post" asp-controller="Relatorios" asp-action="Create">
+          <!-- Campos do formulário -->
+          <input type="hidden" id="RelatorioTurnoId" name="RelatorioTurnoId" value="0" />
+          <input type="hidden" id="OperadorId" name="OperadorId" value="2" />
+
+          <div class="form-group mb-3 form-create">
+            <label for="ResumoAtividades">Resumo das Atividades</label>
+            <textarea class="form-control" id="ResumoAtividades" name="ResumoAtividades" rows="3"
+              placeholder="Escreva seu resumo aqui..." required></textarea>
+          </div>
+
+          <div class="form-group mb-3" id="observacoesContainer">
+            <label for="Observacoes">Observações</label>
+            <textarea class="form-control" id="Observacoes" name="Observacoes" rows="3"
+              placeholder="Insira suas observações"></textarea>
+          </div>
+
+          <div class="form-group mb-3 form-create">
+            <label for="ReatorId">Reator</label>
+            <select class="form-control" id="ReatorId" name="ReatorId" required>
+              @foreach (var reator in ViewBag.Reatores)
+              {
+                <option value="@reator.Value">@reator.Text</option>
+              }
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-3" id="btn-form-relatorio">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para formulário de excluir um relatório -->
+
+<div class="modal fade" id="modalRelatorioDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Relatório</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Você confirma a exclusão do relatório selecionado?
+      </div>
+      <form asp-action="Delete" asp-controller="Relatorios" method="post" class="modal-footer">
+        <input type="hidden" id="RelatorioTurnoIdDelete" name="RelatorioTurnoId" value="0" />
+
+        <div class="d-flex align-items-center" style="gap: 2rem">
+          <button type="button" class="btn btn-secondary" style="width: 8rem" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger" style="width: 8rem">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Efeito de gradiente e bordas arredondadas */
+  .table-gradient th {
+    padding: 12px;
+    font-weight: bold;
+    color: #F5C249;
+    text-transform: uppercase;
+    border: none;
+  }
+
+  /* Efeito de hover para as linhas */
+  .table-hover tbody tr.table-row:hover {
+    background: rgba(13, 110, 253, 0.1);
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  /* Bordas arredondadas e espa�amento entre as linhas */
+  .table tbody tr {
+    background-color: #16171D;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Personaliza��o das c�lulas */
+  .table tbody td {
+    padding: 15px;
+    border-top: none;
+    border-bottom: none;
+    color: #DDD;
+  }
+
+  /* Adiciona sombra e anima��o suave ao passar o mouse */
+  .table tbody tr {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .form-modal {
+    gap: 1rem;
+  }
+
+  .form-modal textarea,
+  .form-modal select,
+  .form-modal textarea:focus,
+  .form-modal select:focus {
+    background: #2D2E33;
+    border-radius: .8rem;
+    border: none;
+    color: #ddd;
+    padding: 1rem;
+  }
+</style>
+
+
+@section Scripts {
+  <script src="~/js/site.js"></script> <!-- Adicione esta linha para o JavaScript -->
+}

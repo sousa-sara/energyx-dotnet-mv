@@ -1,0 +1,110 @@
+@model EnergyX.DTOs.OperadorLoginDto
+
+@{
+  ViewData["Title"] = "Login do Operador";
+}
+
+<div class="d-flex flex-column align-items-center justify-content-center" style="height: 80vh;">
+
+  @if (TempData["ErrorMessage"] != null)
+  {
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+  }
+  @if (TempData["msgRegistro"] != null)
+  {
+    <div class="alert alert-success">@TempData["msgRegistro"]</div>
+  }
+  <div class="container cont">
+    <div class="form sign-in">
+      <form method="post" asp-controller="Operadores" asp-action="Login" class="form__form-controller">
+        <h2>Log in</h2>
+        <label>
+          <span>LOR</span>
+          <input type="text" id="Lor" name="Lor" placeholder="Lincença de Operação Reatores" required>
+        </label>
+        <label>
+          <span>Senha</span>
+          <input type="password" placeholder="Digite sua senha" id="SenhaOperador" name="SenhaOperador" required>
+        </label>
+        <button class="btn-primary mt-2" type="submit">Entrar</button>
+      </form>
+    </div>
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img-text m-up">
+          <img src="~/img/zeus.png" alt="" style="width: 100%;">
+          <h2>Sem acesso?</h2>
+          <p>Clique no botão abaixo para preencher o formulário de registro!</p>
+        </div>
+        <div class="img-text m-in">
+          <img src="~/img/zeus.png" alt="" style="width: 100%;">
+          <h2>É um de nós?</h2>
+          <p>Se você já possui uma conta, basta fazer login. Sentimos sua falta!</p>
+        </div>
+        <div class="img-btn">
+          <span class="m-up">Cadastro</span>
+          <span class="m-in">Log in</span>
+        </div>
+      </div>
+      <div class="form sign-up">
+        <form method="post" asp-controller="Operadores" asp-action="Create" class="form__form-controller">
+          <h2>Cadastro</h2>
+          <label>
+            <span>Nome</span>
+            <input type="text" placeholder="Digite seu nome" id="NomeOperador" name="NomeOperador" required>
+          </label>
+          <label>
+            <span>Cargo</span>
+            <input type="text" placeholder="Digite seu cargo" id="Cargo" name="Cargo" required>
+          </label>
+          <label>
+            <span class="">Lor</span>
+            <input type="text" placeholder="Lincença de Operação Reatores" id="Lor" name="Lor" required>
+          </label>
+          <label>
+            <span>Senha</span>
+            <input type="password" placeholder="Crie sua senha" id="SenhaOperador" name="SenhaOperador" required>
+          </label>
+          <label>
+            <input type="hidden" id="TurnoId" name="TurnoId" value="0" />
+            <span>Escolha seu Turno</span>
+            <div class="label-radiobutton">
+              <div class="custom-radio-container" onclick="setTurnoId(1);">
+                <input type="radio" id="option1" name="custom-radio" value="1" required>
+                <span class="custom-radio"></span>
+                <label for="option1" class="custom-radio-label">Manhã</label>
+              </div>
+              <div class="custom-radio-container" onclick="setTurnoId(2);">
+                <input type="radio" id="option2" name="custom-radio" value="2" required>
+                <span class="custom-radio"></span>
+                <label for="option2" class="custom-radio-label">Tarde</label>
+              </div>
+              <div class="custom-radio-container" onclick="setTurnoId(3);">
+                <input type="radio" id="option3" name="custom-radio" value="3" required>
+                <span class="custom-radio"></span>
+                <label for="option3" class="custom-radio-label">Noite</label>
+              </div>
+            </div>
+          </label>
+
+          <button type="submit" class="btn-primary">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+@section Scripts {
+  <script>
+    function setTurnoId(TurnoId) {
+      document.getElementById("TurnoId").value = TurnoId;
+    }
+    document.querySelector('.img-btn').addEventListener('click', function () {
+      document.querySelector('.cont').classList.toggle('s-signup')
+    }
+    );
+  </script>
+}

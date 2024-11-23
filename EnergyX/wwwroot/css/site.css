@@ -1,0 +1,564 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* 
+#16171D
+
+#21242D
+
+#3E4982
+
+#1333E8
+
+#363A4F	
+
+#2D2E33
+
+#F5C249
+*/
+
+* {
+  font-family: "Poppins", sans-serif;
+  color: #dddddd;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  background: #000;
+  background-image: url('../img/gradiente.webp'); /
+}
+
+body {
+  margin-bottom: 60px;
+  /* background: -webkit-linear-gradient(-45deg, #363A4F, #17181f); */
+  background: #000;
+  background-image: url('../img/gradiente.webp'); /
+}
+
+/* _______CORES PRINCIPAIS */
+.x-txt-color-primary {
+  color: #F5C249;
+}
+
+.title-logo {
+  color: #F5C249;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: 600;
+  transition: all .2s;
+  padding: 0 1rem;
+}
+
+.title-logo:hover {
+  color: #F5C249;
+  text-shadow: 0 0 10px #F5C249;
+  text-decoration: none;
+}
+
+/* ________________BOOTSTRAP */
+.alert-success {
+  color: #ddd;
+  background-color: #227a53;
+  border-color: transparent;
+}
+.alert-danger {
+  color: #ddd;
+  background-color: #b9404b;
+  border-color: transparent;
+}
+
+.modal-content {
+  background-color: #16171D;
+  border-radius: .8rem;
+  border: solid 1px #363A4F;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.btn-danger {
+  height: 3.3rem;
+  border-radius: .8rem;
+}
+
+.btn-close {
+  filter: invert(1);
+}
+
+.btn-primary {
+  background: #F5C249;
+  border-color: transparent;
+  font-weight: 500;
+  color: #16171D;
+  transition: all .2s;
+  border-radius: .8rem;
+  padding: 1rem 0;
+  height: 3.3rem;
+}
+
+.btn-primary:hover {
+  background: #f5c149cb;
+}
+
+.btn-primary:hover,
+.btn-primary:active, 
+.btn-primary:focus {
+    background-color: #f5c149cb; /* Cor ao clicar ou focar */
+    border-color: #f5c149cb;
+    box-shadow: none; /* Remove o efeito de borda padrão */
+    color: #16171D;
+}
+
+.btn-secondary {
+  background: #363A4F;
+  border-color: transparent;
+  font-weight: 500;
+  color: #ddd;
+  transition: all .2s;
+  border-radius: .8rem;
+  padding: 1rem 0;
+  height: 3.3rem;
+}
+
+.btn-secondary:hover {
+  background: #363a4f91;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active, 
+.btn-secondary:focus {
+    background-color: #363a4f91; /* Cor ao clicar ou focar */
+    border-color: #363a4f91;
+    box-shadow: none; /* Remove o efeito de borda padrão */
+    color: #ddd;
+}
+
+
+/* ____________________RESTO */
+
+input, button{
+  border:none;
+  outline: none;
+  background: none;
+}
+
+.cont{
+  overflow: hidden;
+  position: relative;
+  width: 900px;
+  height: 550px;
+  background: #16171D;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  border-radius: 1.5rem;
+}
+
+.form{
+  position: relative; 
+  width: 640px;
+  height: 100%;
+  padding: 2rem 30px;
+  overflow-y: auto;
+  -webkit-transition:-webkit-transform 1.2s ease-in-out;
+  transition: -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.form__form-controller {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+h2{
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label span{
+  font-size: 14px;
+  font-weight: 600;
+  color: #A7AEBF;
+}
+
+input{
+  display: block;
+  width: 360px;
+  margin-top: 5px;
+  font-size: 16px;
+  background: #21242D;
+  border-radius: .8rem;
+  padding: 1rem;
+}
+
+button{
+  display: block;
+  margin: 0 auto;
+  width: 260px;
+  height: 36px;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.submit{
+  margin-top: 40px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-weight: 600;;
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+}
+
+.submit:hover{
+  background: -webkit-linear-gradient(left, #b224ef, #7579ff);
+}
+
+.forgot-pass{
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0c0101;
+  cursor: pointer;
+}
+
+.forgot-pass:hover{
+  color: red;
+}
+
+.social-media{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-media ul{
+  list-style: none;
+}
+
+.social-media ul li{
+  display: inline-block;
+  cursor: pointer;
+  margin: 25px 15px;
+}
+
+.social-media img{
+  width: 40px;
+  height: 40px;
+}
+
+.sub-cont{
+  overflow: hidden;
+  position: absolute;
+  left: 640px;
+  top: 0;
+  width: 900px;
+  height: 100%;
+  padding-left: 260px;
+  background: #16171D;
+  -webkit-transition: -webkit-transform 1.2s ease-in-out;
+  transition: -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out;
+}
+
+.cont.s-signup .sub-cont{
+  -webkit-transform:translate3d(-640px, 0, 0);
+          transform:translate3d(-640px, 0, 0);
+}
+
+.img{
+  overflow: hidden;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  padding-top: 360px;
+}
+
+.img:before{
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 900px;
+  height: 100%;
+  background-image: url(images/bg.jpg);
+  background-size: cover;
+  transition: -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.img:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #363A4F;
+}
+
+.cont.s-signup .img:before{
+  -webkit-transform:translate3d(640px, 0, 0);
+          transform:translate3d(640px, 0, 0);
+}
+
+.img-text{
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+  -webkit-transition:-webkit-transform 1.2s ease-in-out;
+  transition: -webkit-transform 1.2s ease-in-out;
+  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.img-text h2{
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.img-text p{
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cont.s-signup .img-text.m-up{
+  -webkit-transform:translateX(520px);
+          transform:translateX(520px);
+}
+
+.img-text.m-in{
+  -webkit-transform:translateX(-520px);
+          transform:translateX(-520px);
+}
+
+.cont.s-signup .img-text.m-in{
+  -webkit-transform:translateX(0);
+          transform:translateX(0);
+}
+
+
+.sign-in{
+  padding-top: 80px;
+  -webkit-transition-timing-function:ease-out;
+          transition-timing-function:ease-out;
+}
+
+.cont.s-signup .sign-in{
+  -webkit-transition-timing-function:ease-in-out;
+          transition-timing-function:ease-in-out;
+  -webkit-transition-duration:1.2s;
+          transition-duration:1.2s; 
+  -webkit-transform:translate3d(640px, 0, 0);
+          transform:translate3d(640px, 0, 0);
+}
+
+.img-btn{
+  overflow: hidden;
+  z-index: 2;
+  position: relative;
+  width: 60%;
+  height: 36px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  background: transparent;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.img-btn:after{
+  content: '';
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #F5C249;
+  border-radius: .8rem;
+}
+
+.img-btn span{
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #F5C249;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack:center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  -webkit-transition:-webkit-transform 1.2s;
+  transition: -webkit-transform 1.2s;
+  transition: transform 1.2s;
+  transition: transform 1.2s, -webkit-transform 1.2s;;
+}
+
+.img-btn span.m-in{
+  -webkit-transform:translateY(-72px);
+          transform:translateY(-72px);
+}
+
+.cont.s-signup .img-btn span.m-in{
+  -webkit-transform:translateY(0);
+          transform:translateY(0);
+}
+
+.cont.s-signup .img-btn span.m-up{
+  -webkit-transform:translateY(72px);
+          transform:translateY(72px);
+}
+
+.sign-up{
+  -webkit-transform:translate3d(-900px, 0, 0);
+          transform:translate3d(-900px, 0, 0);
+}
+
+.cont.s-signup .sign-up{
+  -webkit-transform:translate3d(0, 0, 0);
+          transform:translate3d(0, 0, 0);
+}
+
+
+/* _________RADIOBUTTON */
+
+/* Container geral para o radio button */
+.label-radiobutton {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.custom-radio-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* Esconde o input padrão */
+.custom-radio-container input[type="radio"] {
+  display: none;
+}
+
+/* Estilo para o círculo do radio button */
+.custom-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #888; /* Cor da borda do círculo */
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Estilo do círculo interno (quando selecionado) */
+.custom-radio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #F5C249; /* Cor do círculo interno */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease;
+}
+
+/* Aplica o estilo ao passar o mouse */
+.custom-radio:hover {
+  border-color: #F5C249;
+}
+
+/* Quando o radio button estiver selecionado */
+.custom-radio-container input[type="radio"]:checked + .custom-radio::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Rótulo associado ao radio button */
+.custom-radio-label {
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Efeito hover no rótulo */
+.custom-radio-container:hover .custom-radio-label {
+  color: #F5C249;
+}
+
+/* _________SCROLLBAR */
+
+/* Customização do estilo do scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Largura do scrollbar */
+  height: 8px; /* Altura do scrollbar horizontal */
+}
+
+/* Estilo da track (fundo) */
+::-webkit-scrollbar-track {
+  background: transparent; /* Cor de fundo da área do scroll */
+  border-radius: 10px; /* Bordas arredondadas da track */
+}
+
+/* Estilo do thumb (parte rolável) */
+::-webkit-scrollbar-thumb {
+  background: #363A4F; /* Cor do thumb */
+  border-radius: 1rem 0 0 1rem; /* Bordas arredondadas do thumb */
+}
+
+/* Efeito hover no thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #F5C249; /* Cor do thumb quando o mouse está em cima */
+}
+
+/* Estilo do scrollbar horizontal (caso precise) */
+::-webkit-scrollbar-horizontal {
+  height: 10px; /* Altura do scrollbar horizontal */
+}
+
+/* Customização da área onde o scroll é aplicado */
+.scrollable-area {
+  height: 300px; /* Altura da área com scrollbar */
+  overflow-y: scroll; /* Ativa o scroll vertical */
+  overflow-x: hidden; /* Desativa o scroll horizontal */
+}

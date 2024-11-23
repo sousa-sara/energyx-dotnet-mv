@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Bem-Vindo";
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 mb-3">Bem-vindo(a) ao Portal EnergyX</h1>
+        <p class="lead">Gerencie relatórios e operações de reatores nucleares de forma eficiente e segura.</p>
+    </div>
+
+    <div class="row mt-5">
+        <!-- Card 1 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm" style="background: #363A4F;">
+                <div class="card-body">
+                    <h5 class="card-title">Relatórios de Turno</h5>
+                    <p class="card-text">Acesse, crie ou edite relatórios de turnos para monitorar as atividades e
+                        operações realizadas nos reatores.</p>
+                    <a href="/RelatoriosTurno" class="btn btn-primary"
+                        style="padding-right: 1rem; padding-left: 1rem;">Ver Relatórios</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm" style="background: #363A4F;">
+                <div class="card-body">
+                    <h5 class="card-title">Gerenciamento de Operadores</h5>
+                    <p class="card-text">Adicione ou atualize informações sobre operadores envolvidos na supervisão dos
+                        reatores.</p>
+                    <a href="/Operadores" class="btn btn-primary"
+                        style="padding-right: 1rem; padding-left: 1rem;">Gerenciar Operadores</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm" style="background: #363A4F;">
+                <div class="card-body">
+                    <h5 class="card-title">Monitoramento em Tempo Real</h5>
+                    <p class="card-text">Acompanhe em tempo real os indicadores de desempenho e segurança dos reatores
+                        nucleares.</p>
+                    <a href="/Monitoramento" class="btn btn-primary"
+                        style="padding-right: 1rem; padding-left: 1rem;">Acessar
+                        Monitoramento</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 text-center">
+        <img src="~/img/zeus.png" alt="Reator Nuclear" class="img-fluid rounded">
+        <p class="mt-3 text-muted">Sua jornada para uma gestão de reatores eficiente começa aqui.</p>
+    </div>
+</div>
